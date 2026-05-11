@@ -1,0 +1,17 @@
+.dart_tool/
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.idea/
+.vscode/
+*.iml
+ios/Pods/
+android/.gradle/
+android/local.properties
+node_modules/
+cdk.out/
+.aws-amplify/
+amplifyconfiguration.dart
+.DS_Store
