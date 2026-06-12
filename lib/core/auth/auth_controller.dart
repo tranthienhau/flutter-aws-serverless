@@ -1,4 +1,6 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthState {
@@ -12,9 +14,10 @@ class AuthState {
 }
 
 class AuthController extends StateNotifier<AuthState> {
-  AuthController() : super(AuthState.initial) { _bootstrap(); }
+  AuthController() : super(AuthState.initial) { bootstrap(); }
 
-  Future<void> _bootstrap() async {
+  @protected
+  Future<void> bootstrap() async {
     try {
       final session = await Amplify.Auth.fetchAuthSession();
       state = state.copyWith(signedIn: session.isSignedIn);

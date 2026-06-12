@@ -3,6 +3,16 @@
 Flutter mobile client wired to an existing AWS Serverless backend
 (Lambda + API Gateway + DynamoDB + Cognito).
 
+## Demo
+
+Real iOS-Simulator captures of the running app (see [FLOW.md](FLOW.md) for how they are generated).
+
+| Sign in | Items | Item detail | Profile |
+| --- | --- | --- | --- |
+| ![Sign in](screenshots/01-sign-in.png) | ![Items](screenshots/02-items.png) | ![Item detail](screenshots/03-item-detail.png) | ![Profile](screenshots/04-profile.png) |
+
+![Demo](screenshots/demo.gif)
+
 ## What it shows
 
 - Cognito User Pool sign-in via `amplify_auth_cognito`
