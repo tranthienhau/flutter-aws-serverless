@@ -6,6 +6,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:flutter_aws_serverless/core/api/items_api.dart';
 import 'package:flutter_aws_serverless/core/auth/auth_controller.dart';
 import 'package:flutter_aws_serverless/core/auth/sign_in_page.dart';
+import 'package:flutter_aws_serverless/core/theme.dart';
 import 'package:flutter_aws_serverless/features/items/items_page.dart';
 import 'package:flutter_aws_serverless/features/items/item_detail_page.dart';
 import 'package:flutter_aws_serverless/features/profile/profile_page.dart';
@@ -45,61 +46,48 @@ void main() {
     await binding.takeScreenshot(name);
   }
 
-  final overrides = <Override>[
+  Widget app(Widget home, {List<Override> overrides = const []}) => ProviderScope(
+        overrides: overrides,
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false, theme: buildAppTheme(), home: home),
+      );
+
+  final itemsOverride = <Override>[
     itemsApiProvider.overrideWithValue(FakeItemsApi()),
   ];
 
   testWidgets('capture sign-in screen', (tester) async {
-    await tester.pumpWidget(
-      const ProviderScope(
-        child: MaterialApp(home: SignInPage()),
-      ),
-    );
-    await tester.pumpAndSettle();
-    // Type some content so the form looks used.
-    await tester.enterText(find.byType(TextField).first, 'hau@example.com');
+    await tester.pumpWidget(app(const SignInPage()));
     await tester.pumpAndSettle();
     await shoot(tester, '01-sign-in');
   });
 
   testWidgets('capture items list', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overrides,
-        child: const MaterialApp(home: ItemsPage()),
-      ),
-    );
+    await tester.pumpWidget(app(const ItemsPage(), overrides: itemsOverride));
     await tester.pumpAndSettle();
     await shoot(tester, '02-items');
   });
 
   testWidgets('capture item detail', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overrides,
-        child: const MaterialApp(home: ItemDetailPage(id: 'a1')),
-      ),
-    );
+    await tester.pumpWidget(app(const ItemDetailPage(id: 'a1'), overrides: itemsOverride));
     await tester.pumpAndSettle();
     await shoot(tester, '03-item-detail');
   });
 
   testWidgets('capture profile', (tester) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          authControllerProvider.overrideWith(
-            (ref) => FakeAuthController()
-              ..state = const AuthState(
-                signedIn: true,
-                sub: 'us-east-1:9f2c',
-                email: 'hau@example.com',
-              ),
-          ),
-        ],
-        child: const MaterialApp(home: ProfilePage()),
-      ),
-    );
+    await tester.pumpWidget(app(
+      const ProfilePage(),
+      overrides: [
+        authControllerProvider.overrideWith(
+          (ref) => FakeAuthController()
+            ..state = const AuthState(
+              signedIn: true,
+              sub: 'us-east-1:9f2c',
+              email: 'hau@example.com',
+            ),
+        ),
+      ],
+    ));
     await tester.pumpAndSettle();
     await shoot(tester, '04-profile');
   });
