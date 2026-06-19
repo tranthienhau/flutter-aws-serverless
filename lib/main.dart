@@ -6,6 +6,7 @@ import 'package:amplify_api/amplify_api.dart';
 
 import 'core/amplify_config.dart';
 import 'core/router.dart';
+import 'core/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,8 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       title: 'AWS Serverless POC',
-      theme: ThemeData(colorSchemeSeed: Colors.deepPurple, useMaterial3: true),
+      debugShowCheckedModeBanner: false,
+      theme: buildAppTheme(),
       routerConfig: ref.watch(routerProvider),
     );
   }
