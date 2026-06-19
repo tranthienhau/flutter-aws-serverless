@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Hanken+Grotesk:wght@500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Manrope:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "primary-fixed-dim": "#c3c0ff",
+                  "outline-variant": "#c7c4d8",
+                  "error-container": "#ffdad6",
+                  "secondary-fixed-dim": "#c8c5d3",
+                  "on-tertiary-fixed-variant": "#41474f",
+                  "tertiary-fixed-dim": "#c1c7d0",
+                  "on-secondary-container": "#65636f",
+                  "inverse-surface": "#2e3132",
+                  "surface-container-highest": "#e1e3e4",
+                  "inverse-on-surface": "#f0f1f2",
+                  "on-error-container": "#93000a",
+                  "on-surface-variant": "#464555",
+                  "on-background": "#191c1d",
+                  "on-secondary-fixed-variant": "#474551",
+                  "secondary-fixed": "#e4e0ef",
+                  "surface-bright": "#f8f9fa",
+                  "primary-fixed": "#e2dfff",
+                  "tertiary-container": "#6e747c",
+                  "surface-container-high": "#e7e8e9",
+                  "on-tertiary-container": "#fafaff",
+                  "tertiary": "#555b63",
+                  "surface-container-low": "#f3f4f5",
+                  "surface-dim": "#d9dadb",
+                  "outline": "#777587",
+                  "secondary": "#5f5d69",
+                  "secondary-container": "#e4e0ef",
+                  "on-primary": "#ffffff",
+                  "primary": "#493ee5",
+                  "error": "#ba1a1a",
+                  "background": "#f8f9fa",
+                  "surface-container": "#edeeef",
+                  "surface-tint": "#4c42e9",
+                  "on-secondary-fixed": "#1b1a25",
+                  "inverse-primary": "#c3c0ff",
+                  "on-surface": "#191c1d",
+                  "on-tertiary-fixed": "#161c23",
+                  "on-error": "#ffffff",
+                  "on-primary-fixed-variant": "#321ed2",
+                  "on-primary-container": "#fefaff",
+                  "tertiary-fixed": "#dde3ec",
+                  "on-tertiary": "#ffffff",
+                  "surface": "#f8f9fa",
+                  "on-secondary": "#ffffff",
+                  "surface-container-lowest": "#ffffff",
+                  "on-primary-fixed": "#0f0069",
+                  "primary-container": "#635bff",
+                  "surface-variant": "#e1e3e4"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "inner-padding-md": "1.25rem",
+                  "gutter": "1rem",
+                  "inner-padding-sm": "0.75rem",
+                  "section-gap": "2.5rem",
+                  "container-padding": "1.5rem",
+                  "stack-gap": "1rem"
+          },
+          "fontFamily": {
+                  "body-lg": ["Manrope"],
+                  "headline-lg": ["Manrope"],
+                  "headline-lg-mobile": ["Manrope"],
+                  "headline-md": ["Manrope"],
+                  "label-caps": ["Hanken Grotesk"],
+                  "body-sm": ["Manrope"],
+                  "label-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                  "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #191c1d;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .soft-focus-shadow {
+      box-shadow: 0 8px 24px rgba(99, 91, 255, 0.08);
+    }
+    .profile-card {
+      transition: transform 0.2s ease;
+    }
+    .profile-card:active {
+      transform: scale(0.98);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-lg text-on-background">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="inventory_2">inventory_2</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Inventory</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors" data-icon="search">search</button>
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-secondary-container transition-colors" data-icon="more_vert">more_vert</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding max-w-lg mx-auto min-h-screen">
+<!-- Profile Hero Section -->
+<section class="flex flex-col items-center text-center mb-section-gap">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-3xl overflow-hidden soft-focus-shadow border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a technology specialist against a clean, soft-lit background. The aesthetic is modern and corporate with a palette of warm grays and crisp whites. The subject looks friendly and approachable, embodying high-end accessibility and efficiency in a technical field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC--hR5cwQw1WCdAjPL3OucoCx7wE_D0Fm84QWA2jJOxneLw3ZlsaTklEL-8BiBPIdnVZBWb_16RDL0T_FvRU1ns6Bz9hew1UJhkoNCBAxd4D23IAwnfAJdkw0mIY5KLd5awby-KVOgJ7_BYvnFQBwA43ssavr_Za-8WPFPOkY6jWNDLywLeo-Lmn0eRFSVZ857kZzPyyNi3kLWENGIBF2AUEfvEUHeWP205cIqY6d4l0FM_ABwYy_j4s7EzVmrwk8TihMR8eimjB0"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-primary p-2.5 rounded-xl text-on-primary shadow-lg hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="space-y-1">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Hau Example</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">hau@example.com</p>
+</div>
+</section>
+<!-- Account Details Card -->
+<div class="bg-surface-container-lowest rounded-xl soft-focus-shadow mb-6 overflow-hidden">
+<div class="p-container-padding space-y-6">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed-variant" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">EMAIL ADDRESS</p>
+<p class="text-body-lg font-body-lg text-on-surface">hau@example.com</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="h-px bg-surface-container-highest w-full"></div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface-variant">ACCOUNT TYPE</p>
+<p class="text-body-lg font-body-lg text-on-surface">AWS Admin Tier</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Management Card -->
+<div class="bg-surface-container-lowest rounded-xl soft-focus-shadow mb-section-gap overflow-hidden">
+<div class="p-container-padding">
+<h3 class="text-label-caps font-label-caps text-on-surface-variant mb-4">SYSTEM SETTINGS</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="text-body-lg font-body-lg">Notifications</span>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary-container rounded-full ml-auto"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="dark_mode">dark_mode</span>
+<span class="text-body-lg font-body-lg">Dark Appearance</span>
+</div>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-outline-variant rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sign Out Action -->
+<div class="px-container-padding mb-10">
+<button class="w-full h-14 bg-primary text-on-primary font-headline-md rounded-xl flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+        Sign out
+      </button>
+<p class="text-center text-label-sm font-label-sm text-outline mt-6">App Version 2.4.1 (Build 890)</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 shadow-[0_-8px_24px_rgba(99,91,255,0.08)] bg-surface-container-lowest dark:bg-inverse-surface rounded-t-xl">
+<!-- Items Tab -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mb-1 group-active:scale-95 transition-transform duration-150" data-icon="list_alt">list_alt</span>
+<span class="text-label-sm font-label-sm">Items</span>
+</a>
+<!-- Categories Tab -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mb-1 group-active:scale-95 transition-transform duration-150" data-icon="category">category</span>
+<span class="text-label-sm font-label-sm">Categories</span>
+</a>
+<!-- Profile Tab (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-variant text-on-primary-container dark:text-on-primary-fixed-variant rounded-xl px-4 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+    // Ripple effect and simple interaction logic
+    document.querySelectorAll('button, a').forEach(elem => {
+      elem.addEventListener('mousedown', function(e) {
+        if(this.classList.contains('active:scale-95')) return;
+        this.style.transition = 'transform 0.1s';
+        this.style.transform = 'scale(0.97)';
+      });
+      elem.addEventListener('mouseup', function(e) {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body></html>

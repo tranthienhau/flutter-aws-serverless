@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Inventory Management - Items</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Hanken+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c3c0ff",
+                    "outline-variant": "#c7c4d8",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#c8c5d3",
+                    "on-tertiary-fixed-variant": "#41474f",
+                    "tertiary-fixed-dim": "#c1c7d0",
+                    "on-secondary-container": "#65636f",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#464555",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed-variant": "#474551",
+                    "secondary-fixed": "#e4e0ef",
+                    "surface-bright": "#f8f9fa",
+                    "primary-fixed": "#e2dfff",
+                    "tertiary-container": "#6e747c",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-container": "#fafaff",
+                    "tertiary": "#555b63",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "outline": "#777587",
+                    "secondary": "#5f5d69",
+                    "secondary-container": "#e4e0ef",
+                    "on-primary": "#ffffff",
+                    "primary": "#493ee5",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "surface-tint": "#4c42e9",
+                    "on-secondary-fixed": "#1b1a25",
+                    "inverse-primary": "#c3c0ff",
+                    "on-surface": "#191c1d",
+                    "on-tertiary-fixed": "#161c23",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#321ed2",
+                    "on-primary-container": "#fefaff",
+                    "tertiary-fixed": "#dde3ec",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#0f0069",
+                    "primary-container": "#635bff",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "inner-padding-md": "1.25rem",
+                    "gutter": "1rem",
+                    "inner-padding-sm": "0.75rem",
+                    "section-gap": "2.5rem",
+                    "container-padding": "1.5rem",
+                    "stack-gap": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "body-sm": ["Manrope"],
+                    "label-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-focus-shadow {
+            box-shadow: 0 8px 24px rgba(99, 91, 255, 0.08);
+        }
+        .active-interaction:active {
+            transform: scale(0.98);
+            transition: transform 0.2s ease;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-surface dark:bg-on-background flex justify-between items-center w-full px-container-padding h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-[28px]" data-icon="inventory_2">inventory_2</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Inventory</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active-interaction">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+</header>
+<main class="px-container-padding py-4 space-y-6">
+<!-- Search & Filter Area (Modern Visual) -->
+<section class="space-y-4">
+<div class="relative">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="manage_search">manage_search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-body-sm transition-all shadow-sm" placeholder="Search industrial assets..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm whitespace-nowrap active-interaction cursor-pointer">All Items</span>
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-interaction cursor-pointer">Sensors</span>
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-interaction cursor-pointer">Gateways</span>
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm whitespace-nowrap active-interaction cursor-pointer">Serverless</span>
+</div>
+</section>
+<!-- Bento Grid / Card List Layout -->
+<section class="grid grid-cols-1 gap-4">
+<!-- Featured Card -->
+<div class="group relative overflow-hidden bg-primary p-6 rounded-2xl text-white soft-focus-shadow active-interaction cursor-pointer">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="text-label-caps font-label-caps opacity-80">PRIORITY ASSET</span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile mt-1">Industrial sensor kit</h2>
+</div>
+<div class="mt-8 flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm opacity-80">Available Quantity</span>
+<span class="text-headline-lg font-headline-lg leading-none">12</span>
+</div>
+<span class="material-symbols-outlined text-[32px]" data-icon="sensors">sensors</span>
+</div>
+</div>
+</div>
+<!-- List Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant soft-focus-shadow flex items-center gap-4 active-interaction cursor-pointer">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="router">router</span>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-body-lg font-bold truncate">Edge gateway unit</h3>
+<p class="text-body-sm text-on-surface-variant">Qty: 4 units</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant soft-focus-shadow flex items-center gap-4 active-interaction cursor-pointer">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="key">key</span>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-body-lg font-bold truncate">Cognito-secured token</h3>
+<p class="text-body-sm text-on-surface-variant">Qty: 1 item</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant soft-focus-shadow flex items-center gap-4 active-interaction cursor-pointer">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="database">database</span>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-body-lg font-bold truncate">DynamoDB capacity block</h3>
+<p class="text-body-sm text-on-surface-variant">Qty: 25 units</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item Card 4 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant soft-focus-shadow flex items-center gap-4 active-interaction cursor-pointer">
+<div class="w-12 h-12 bg-error-container rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="bolt">bolt</span>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-body-lg font-bold truncate">Lambda warm pool</h3>
+<p class="text-body-sm text-on-surface-variant">Qty: 8 instances</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item Card 5 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant soft-focus-shadow flex items-center gap-4 active-interaction cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="api">api</span>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="text-body-lg font-bold truncate">API Gateway stage</h3>
+<p class="text-body-sm text-on-surface-variant">Qty: 3 stages</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 gap-4 pb-12">
+<div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">TOTAL STOCK</span>
+<span class="text-headline-md font-headline-md text-primary">53</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">CATEGORIES</span>
+<span class="text-headline-md font-headline-md text-primary">6</span>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-95 z-40 flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 shadow-lg bg-surface-container-lowest dark:bg-inverse-surface rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-variant text-on-primary-container dark:text-on-primary-fixed-variant rounded-xl px-4 py-1 active-interaction" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="text-label-sm font-label-sm">Items</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 active-interaction hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="text-label-sm font-label-sm">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-fixed-variant px-4 py-1 active-interaction hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.active-interaction').forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.style.transform = 'scale(0.98)';
+            });
+            element.addEventListener('touchend', () => {
+                element.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
